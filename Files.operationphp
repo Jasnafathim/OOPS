@@ -1,0 +1,32 @@
+<?php
+$f=fopen("demo.txt","w");
+fwrite($f,"this is a file write operation<br/>");
+fclose($f);
+
+$x=fopen("demo.txt","a");
+fwrite($x,"append operation on file<br/>");
+fclose($x);
+
+$a=fopen("demo.txt","r");
+while(!feof($a))
+{
+    echo fgetc($a);
+}
+fclose($a);
+
+$t=touch("newfile.txt");
+if(!$t)
+{
+    echo "file not created";
+}
+
+$t=unlink("newfile.txt");
+if(!$t)
+{
+    echo "file not deleted";
+}
+
+rename("demo.txt","filesample.txt");
+
+copy("filesample.txt","demo.txt");
+?>
